@@ -1,3 +1,64 @@
+# ETL Process for Product Data
+
+This repository contains the ETL (Extraction, Transformation, and Loading) process for the company's product data under study, involving the extraction of data from raw sources, transformation into an analytical format, and loading into the destination database (in this case, Google BigQuery on GCP).
+
+## Author
+Ubiratan J. Motta Filho
+Created on: 08/17/2023
+
+## Overview
+This ETL process was created to move product data from the raw layer to the analytical layer, enabling more comprehensive analyses and reports.
+
+## Source and Destination Layers
+- Source Layer: Raw
+- Destination Layer: Analytical
+
+## Objective
+The objective of this ETL process is to load product data into the analytical layer for detailed analysis and reporting.
+
+## Prerequisites
+- Python environment with the necessary libraries (google-cloud-bigquery, pyspark, argparse)
+- Access to Google Cloud services (BigQuery)
+- Properly formatted JSON files in the source directory
+
+## Usage
+1. Ensure the required Python environment and mandatory libraries are installed.
+2. Execute the ETL process using the provided script.
+
+## Parameters
+- `p_dataref`: Date reference in the format YYYYMMDD (e.g., 20220530)
+- `p_ambiente`: Execution environment (dev, hml, prd)
+
+## Spark Configuration
+The ETL process utilizes Spark for data processing. The Spark session and context are initialized with specific configurations for improved performance.
+
+## Logger
+The ETL process employs logging to provide detailed information about the execution steps.
+
+## Data Processing Steps
+1. Reading raw JSON files from the source directory based on the specified date reference and topic.
+2. Structuring and expanding nested structures in the data.
+3. Filtering records with missing or invalid data.
+4. Transforming and cleaning the data to create the desired schema.
+5. Converting the processed data into a Pandas DataFrame.
+6. Loading the Pandas DataFrame into a BigQuery table in the 'ANALITICO_CONTROLE_LOJA' dataset.
+
+## BigQuery Destination
+- Dataset: ANALITICO_CONTROLE_LOJA
+- Table: CONSOLIDADO_PRODUTO
+
+## Running the ETL Process
+1. Ensure the Python environment is correctly configured with the necessary libraries.
+2. Execute the provided script with the required parameters.
+
+## Notes
+- This ETL process was designed for the specific structure and schema of co-brokerage data.
+- Ensure proper access to Google Cloud services and permissions for data loading.
+
+---
+**Disclaimer**: This ETL process is provided "as-is" and may require customization to fit your specific data and requirements.
+
+------------------------------------------------------------------------------------------------
 # Processo ETL para dados de Produtos
 
 Este repositório contém o processo ETL (Extração, Transformação e Carregamento) para os dados de produtos da empresa em estudo, que envolve a extração de dados de fontes brutas, a transformação em um formato analítico e o carregamento no banco de dados de destino (neste caso o BigQuery da GCP).
